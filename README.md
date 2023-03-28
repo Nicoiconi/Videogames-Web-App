@@ -14,6 +14,9 @@ back:
   - Sequelize
   - Cloudinary
 
+API:
+
+https://rawg.io/apidocs
 
 Cloudinary
 
