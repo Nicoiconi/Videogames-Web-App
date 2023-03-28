@@ -1,0 +1,32 @@
+.linksContainer {
+  background-color: #493F3F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+
+.link p {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  cursor: pointer;
+  background-color: #04B4EC;
+  color: #BEBEBE;
+}
+
+/* .link a:focus {
+  background-color: #04B4EC;
+
+} */
+
+.link {
+  display: flex;
+  border: 2px solid grey;
+  margin: 1vh 2vh;
+  padding: 1vh;
+  color: white;
+}
+

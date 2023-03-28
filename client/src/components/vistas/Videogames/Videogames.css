@@ -1,0 +1,61 @@
+.fullBar {
+
+  position: fixed;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #583737;
+}
+
+
+.botones {
+background-color: #A73B3B;
+}
+
+
+
+.listado button:hover {
+  color: #5E5F6A;
+}
+
+/* .individualCard {
+  display: flex;
+  background-color: lightblue;
+} */
+
+
+
+.filtroOrden {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #733E3E;
+}
+
+.filtroOrden div {
+  border: 1px solid black;
+  margin: 1vh;
+  padding: 1vh;
+  background-color: #939393;
+}
+
+
+.pindonga {
+  background-color: #9F9F9F;
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+}
+
+.carta-juego{
+  padding: 10px;
+}
+
+.eltodo{
+  display: flex;
+  flex-direction: column;
+  
+}

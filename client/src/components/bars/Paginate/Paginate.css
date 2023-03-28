@@ -1,0 +1,15 @@
+.paginate{
+  display: flex;
+  flex-direction: row;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.margen{
+  margin: 5px;
+}
+
+.input-paginado{
+  max-width: 20px;
+}

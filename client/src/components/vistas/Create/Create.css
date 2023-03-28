@@ -1,0 +1,98 @@
+.vista-crear{
+  display: flex;
+  justify-content: center;
+}
+
+.all {
+ display: flex;
+}
+
+.defaultImagesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.defaultImages {
+  display: flex;
+  align-items: center;
+  
+}
+
+.defaultImages img {
+  width: 35vh;
+
+}
+
+.defaultImages div {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
+
+.genres {
+  /* border: 1px solid black; */
+  /* display: flex; */
+  justify-content: center;
+  flex-direction: column;
+  /* width: 100vh; */
+
+}
+
+.genresChecks {
+  border: 1px solid black;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  width: 90vh;
+  
+}
+
+.genreLabel {
+  border: 1px solid black;
+  margin: 0 1vh;
+}
+
+.right {
+  border: 1px solid black;
+
+}
+
+.platformList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 65vh;
+  height: 85vh;
+}
+
+.platLabel {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.left{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.label-input{
+  display: flex;
+  flex-direction: column;
+}
+
+.img-preview{
+  width: 10rem;
+}
+.acomodo-imagen{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

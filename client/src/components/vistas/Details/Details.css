@@ -1,0 +1,47 @@
+.contenedor{
+  border: 1px solid black;
+  min-height: 80vh;
+}
+
+.game-card{
+
+}
+
+.img-genres-plats{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-img{
+  width: 50vh;
+  border: 1px solid black;
+}
+
+.genres-plats{
+
+}
+
+.genres{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.genre{
+  margin: 0px 5px;
+}
+
+.plats{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.plats{
+  margin: 0px 5px;
+}
