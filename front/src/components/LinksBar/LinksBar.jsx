@@ -4,7 +4,6 @@ import "./LinksBar.css"
 export default function LinksBar() {
 
   const location = useLocation()
-  console.log(location)
 
   return (
     <div>
