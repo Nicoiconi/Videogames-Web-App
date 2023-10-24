@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import HomeLink from "../HomeLink/HomeLink"
 import LinksBar from "../LinksBar/LinksBar"
 import "./VideoGames.css"
+import CardsContainer from "../CardsContainer/CardsContainer"
+import Card from "../Card/Card"
 
 
 export default function VideoGames() {
@@ -52,7 +54,7 @@ export default function VideoGames() {
     fetchData()
   }, [])
 
-  // console.log(videoGamesToShow)
+  console.log(videoGamesToShow)
 
   return (
     <div className="videogames">
@@ -61,7 +63,16 @@ export default function VideoGames() {
 
       videogames
       <HomeLink />
+{/* 
+      {
+        videoGamesToShow?.map(vg => {
+          return(
+            <Card game={vg} />
+          )
+        })
+      } */}
 
+      <CardsContainer games={videoGamesToShow} />
     </div>
   )
 }
