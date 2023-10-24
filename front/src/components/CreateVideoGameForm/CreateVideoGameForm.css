@@ -1,6 +1,5 @@
-.landing-page {
+.create-videogame {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }

@@ -1,21 +1,15 @@
-import { Link } from "react-router-dom";
 import "./LandingPage.css"
+import LinksBar from "../LinksBar/LinksBar";
 
 export default function LandingPage() {
   return (
     <div className="landing-page">
-      hola
+      <h1>Bienvenidos</h1>
 
+      <h6>
+      <LinksBar />
+      </h6>
 
-      <Link to="/videogames">
-        videogames
-      </Link>
-      <Link to="/videogame-detail">
-        videogame-detail
-      </Link>
-      <Link to="/create-videogame">
-        create-videogame
-      </Link>
 
     </div>
   )

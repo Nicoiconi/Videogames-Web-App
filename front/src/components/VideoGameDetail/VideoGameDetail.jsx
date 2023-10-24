@@ -1,8 +1,13 @@
-import HomeLink from "../HomeLink/HomeLink";
+import HomeLink from "../HomeLink/HomeLink"
+import LinksBar from "../LinksBar/LinksBar"
+import "./VideoGameDetail.css"
 
 export default function VideoGameDetail() {
   return (
-    <div>
+    <div className="videogame">
+
+      <LinksBar />
+
       videogame detail
       <HomeLink />
     </div>
