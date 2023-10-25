@@ -21,7 +21,7 @@ export default function Card({ game }) {
       <div className="platforms-genres">
         <div className="platforms-genres-list">
           <strong>
-            Platforms
+            Platforms {game.platforms.length}
           </strong>
           <ul>
             {
@@ -37,7 +37,7 @@ export default function Card({ game }) {
 
         <div className="platforms-genres-list">
           <strong>
-            Genres
+            Genres {game.genres.length}
           </strong>
           <ul>
             {
