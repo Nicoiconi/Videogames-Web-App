@@ -49,9 +49,9 @@ export default function VideoGames() {
     if (videoGamesToShow?.length > 0) {
       await Promise.all(videoGamesToShow.map(async vg => {
         const result = await addData(vg)
-        if (result === "Already created") {
-          // quantityCreated++
-        }
+        // if (result === "Already created") {
+        //   // quantityCreated++
+        // }
       }))
     }
     const storedVideoGames = await getAllData()
@@ -79,6 +79,7 @@ export default function VideoGames() {
       <HomeLink />
 
       <div className="video-game-button">
+        Number of games
         <input
           className="quantity-input"
           onChange={(e) => handlePageSize(e)}

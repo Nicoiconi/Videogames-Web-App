@@ -1,9 +1,56 @@
-.card{
+.card {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 300px;
+  height: 350px;
+  border: 3px solid rgb(73, 85, 255);
+  border-radius: 10px;
+  background-color: rgb(173, 159, 253);
+}
+
+.card-title {
+  color: darkblue;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.card-image-container {
+  width: 95%;
+  padding: 0;
+  margin: 0;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+
+}
+
+.platforms-genres {
+  color: rgb(0, 0, 107);
   display: flex;
   justify-content: center;
+  width: 96%;
+  height: 120px;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid black;
+}
+
+.platforms-genres-list {
+  display: flex;
   align-items: center;
-  width: 250px;
-  height: 300px;
-  border: 1px solid lightblue;
-  border-radius: 10px;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  padding: 0 10px;
+  width: 50%;
+}
+
+.platforms-genres-list ul {
+  overflow-y: auto;
+}
+
+.platforms-genres-list li {
 }

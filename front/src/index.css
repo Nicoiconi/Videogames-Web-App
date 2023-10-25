@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #b4acff;
+  background-color: #272c70;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,12 +38,12 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1.5px solid black;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #180083;
+  background-color: #4e5ac4;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -53,6 +53,12 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 @media (prefers-color-scheme: light) {

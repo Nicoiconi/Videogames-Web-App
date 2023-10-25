@@ -2,24 +2,30 @@
   padding: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .landing-page-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid white;
-    border-radius: 10px;
-    margin: 10px 20px;
-    padding: 10px;
-    font-size: 20px;
-  }
-  
-  .landing-page-link:hover{
-    background-color: rgb(130, 189, 238);
-  }
-  
-  .route{
-    background-color: rgb(156, 214, 253);
-    color: darkblue;
-  }
+}
+
+.landing-page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid white; */
+  border-radius: 10px;
+  margin: 10px 20px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.landing-page-link:hover {
+  background-color: rgb(130, 189, 238);
+}
+
+.route {
+  background-color: rgb(156, 214, 253);
+  color: darkblue;
+}
+
+.landing-page-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
