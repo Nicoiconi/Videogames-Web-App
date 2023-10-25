@@ -127,7 +127,10 @@ export default function VideoGames() {
             {
               videoGamesToShow?.length === 0
                 ? "There are no video games"
-                : <CardsContainer games={videoGamesToShow} />
+                : <>
+                  <h3>{`${videoGamesToShow.length} games were found`}</h3>
+                  <CardsContainer games={videoGamesToShow} />
+                </>
             }
           </>
       }
