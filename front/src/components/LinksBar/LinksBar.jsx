@@ -9,22 +9,33 @@ export default function LinksBar() {
     <div>
       <div className="landing-page-links">
         <Link
-          className={location.pathname === "/videogames" ? "landing-page-link route" : "landing-page-link"}
           to="/videogames"
         >
-          videogames
+          <button
+            className={location.pathname === "/videogames" ? "landing-page-link route" : "landing-page-link"}
+
+          >
+            videogames
+          </button>
         </Link>
         <Link
-          className={location.pathname === "/videogame-detail" ? "landing-page-link route" : "landing-page-link"}
           to="/videogame-detail"
         >
-          videogame-detail
+          <button
+            className={location.pathname === "/videogame-detail" ? "landing-page-link route" : "landing-page-link"}
+
+          >
+            videogame-detail
+          </button>
         </Link>
         <Link
-          className={location.pathname === "/create-videogame" ? "landing-page-link route" : "landing-page-link"}
           to="/create-videogame"
         >
-          create-videogame
+          <button
+            className={location.pathname === "/create-videogame" ? "landing-page-link route" : "landing-page-link"}
+          >
+            create-videogame
+          </button>
         </Link>
       </div>
     </div>

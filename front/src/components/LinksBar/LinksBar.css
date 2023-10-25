@@ -16,9 +16,10 @@
   }
   
   .landing-page-link:hover{
-    background-color: violet;
+    background-color: rgb(130, 189, 238);
   }
   
   .route{
-    background-color: violet;
+    background-color: rgb(156, 214, 253);
+    color: darkblue;
   }

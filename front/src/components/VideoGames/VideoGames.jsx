@@ -45,12 +45,12 @@ export default function VideoGames() {
   }
 
   const handleStoreVideoGames = async () => {
-    let quantityCreated = 0
+    // let quantityCreated = 0
     if (videoGamesToShow?.length > 0) {
       await Promise.all(videoGamesToShow.map(async vg => {
         const result = await addData(vg)
         if (result === "Already created") {
-          quantityCreated++
+          // quantityCreated++
         }
       }))
     }
@@ -78,38 +78,46 @@ export default function VideoGames() {
       videogames
       <HomeLink />
 
-      <div>
+      <div className="video-game-button">
         <input
           className="quantity-input"
           onChange={(e) => handlePageSize(e)}
           type="number"
           value={pageSize}
         />
-
         <button
           onClick={() => handleGetVideoGames()}
         >
-          Get Video Games
+
+          Get API Video Games
         </button>
       </div>
 
-      <button
-        onClick={() => handleStoreVideoGames()}
-      >
-        Store Video Games
-      </button>
+      <div className="video-games-buttons-bar">
 
-      <button
-        onClick={() => handleGetStoredVideoGames()}
-      >
-        Get Stored Video Games
-      </button>
 
-      <button
-        onClick={() => handleClearVideoGames()}
-      >
-        Clear Stored Video Games
-      </button>
+        <button
+          className="video-game-button"
+          onClick={() => handleStoreVideoGames()}
+        >
+          Store Video Games
+        </button>
+
+        <button
+          className="video-game-button"
+          onClick={() => handleGetStoredVideoGames()}
+        >
+          Get Stored Video Games
+        </button>
+
+        <button
+          className="video-game-button"
+          onClick={() => handleClearVideoGames()}
+        >
+          Clear Stored Video Games
+        </button>
+      </div>
+
 
       {
         isLoading
