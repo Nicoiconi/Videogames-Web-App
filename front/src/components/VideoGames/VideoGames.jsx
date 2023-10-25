@@ -11,14 +11,22 @@ export default function VideoGames() {
 
   const [videoGamesToShow, setVideoGamesToShow] = useState([])
   const [isLoading, setISLoading] = useState(false)
+  const [pageSize, setPageSize] = useState(0)
 
-  // useEffect(() => {
-  //   getAllData().then(result => setVideoGamesToShow(result))
-  // }, [])
+  const handlePageSize = (e) => {
+    const { value } = e.target
+    setPageSize(Number(value))
+  }
 
   const handleGetVideoGames = async () => {
     setISLoading(true)
-    const videogames = await getVideogames()
+    console.log(pageSize)
+    let videogames
+    if (pageSize > 0) {
+      videogames = await getVideogames(pageSize)
+    } else {
+      videogames = await getVideogames()
+    }
     // console.log(videogames)
     await Promise.all(videogames.map(vg => addData(vg)))
     const storedVideoGames = await getAllData()
@@ -30,7 +38,6 @@ export default function VideoGames() {
   const handleClearVideoGames = async () => {
     await Promise.all(videoGamesToShow.map(vg => deleteData(vg.apiId)))
     const storedVideoGames = await getAllData()
-    // console.log(storedVideoGames)
     if (storedVideoGames.length === 0) setVideoGamesToShow([])
   }
 
@@ -41,6 +48,11 @@ export default function VideoGames() {
 
       videogames
       <HomeLink />
+
+      <input
+        onChange={(e) => handlePageSize(e)}
+        type="number"
+      />
 
       <button
         onClick={() => handleGetVideoGames()}

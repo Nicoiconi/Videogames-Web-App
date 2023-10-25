@@ -1,8 +1,13 @@
 const apiKey = import.meta.env.VITE_API_KEY
 
-export const getVideogames = async () => {
+export const getVideogames = async (size) => {
   try {
-    const response = await fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
+    let response
+    if (size > 0) {
+      response = await fetch(`https://api.rawg.io/api/games?key=${apiKey}&page_size=${size}`)
+    } else {
+      response = await fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
+    }
 
     if (!response.ok) {
       throw new Error(`Error status: ${response.status}`)
