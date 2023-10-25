@@ -9,9 +9,23 @@ import { getVideogames } from "../../utils/api"
 
 export default function VideoGames() {
 
+  const [gamesList, setGamesList] = useState([]);
   const [videoGamesToShow, setVideoGamesToShow] = useState([])
   const [isLoading, setISLoading] = useState(false)
   const [pageSize, setPageSize] = useState()
+  const [filterByName, setFilterByName] = useState("")
+  const [filterByGenres, setFilterByGenres] = useState("")
+  const [filterByPlatform, setFilterByPlatform] = useState("")
+  const [filterByRating, setFilterByRating] = useState(0);
+  const [genresToShow, setGenresToShow] = useState([])
+  const [platformsToShow, setPlatformsToShow] = useState([])
+
+  useEffect(() => {
+    const uniqueGenres = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.genres)))
+    setGenresToShow(uniqueGenres)
+    const uniquePlatforms = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.platforms)))
+    setPlatformsToShow(uniquePlatforms)
+  }, [videoGamesToShow])
 
   useEffect(() => {
     setPageSize(0)
@@ -20,6 +34,7 @@ export default function VideoGames() {
   useEffect(() => {
     const getStoredVideoGames = async () => {
       const storedVideoGames = await getAllData()
+      setGamesList(storedVideoGames)
       setVideoGamesToShow(storedVideoGames)
     }
     if (videoGamesToShow?.length === 0) {
@@ -40,6 +55,7 @@ export default function VideoGames() {
     } else {
       videogames = await getVideogames()
     }
+    setGamesList(videogames)
     setVideoGamesToShow(videogames)
     setISLoading(false)
   }
@@ -60,7 +76,6 @@ export default function VideoGames() {
 
   const handleGetStoredVideoGames = async () => {
     const storedVideoGames = await getAllData()
-    console.log(storedVideoGames)
     setVideoGamesToShow(storedVideoGames)
   }
 
@@ -68,6 +83,72 @@ export default function VideoGames() {
     await Promise.all(videoGamesToShow.map(vg => deleteData(vg.apiId)))
     const storedVideoGames = await getAllData()
     if (storedVideoGames.length === 0) setVideoGamesToShow([])
+  }
+
+  const filterVideoGames = (name, genre, platform, rating) => {
+    let filteredGames = [...gamesList]
+    if (name) {
+      filteredGames = filteredGames.filter(vg => {
+        return (
+          vg.name.toLowerCase().includes(name.toLowerCase())
+        )
+      })
+    }
+    if (genre) {
+      filteredGames = filteredGames.filter(vg => {
+        return (
+          vg.genres.includes(genre)
+        )
+      })
+    }
+    if (platform) {
+      filteredGames = filteredGames.filter(vg => {
+        return (
+          vg.platforms.includes(platform)
+        )
+      })
+    }
+    if (rating) {
+      filteredGames = filteredGames.filter(vg => {
+        return (
+          Number(vg.rating) === Number(rating)
+        )
+      })
+    }
+    setVideoGamesToShow(filteredGames)
+  }
+
+  const handleFilterByName = (e) => {
+    const { value } = e.target
+    setFilterByName(value)
+    filterVideoGames(value, filterByGenres, filterByPlatform, filterByRating)
+  }
+
+  const handleFilterByNameGenre = (e) => {
+    const { value } = e.target
+    setFilterByGenres(value)
+    filterVideoGames(filterByName, value, filterByPlatform, filterByRating)
+  }
+
+  const handleFilterByPlatform = (e) => {
+    const { value } = e.target
+    setFilterByPlatform(value)
+    filterVideoGames(filterByName, filterByGenres, value, filterByRating)
+  }
+
+  const handleFilterByRating = (e) => {
+    const {value} = e.target
+    if(Number(value) === 0) return
+    setFilterByRating(value)
+    filterVideoGames(filterByName, filterByGenres, filterByPlatform, value)
+  }
+
+  const handleClearFilters = () => {
+    setFilterByName('')
+    setFilterByGenres('')
+    setFilterByPlatform('')
+    setFilterByRating(0)
+    setVideoGamesToShow(gamesList)
   }
 
   return (
@@ -96,7 +177,6 @@ export default function VideoGames() {
 
       <div className="video-games-buttons-bar">
 
-
         <button
           className="video-game-button"
           onClick={() => handleStoreVideoGames()}
@@ -119,6 +199,88 @@ export default function VideoGames() {
         </button>
       </div>
 
+      <div className="filter-inputs-bar">
+
+        <div className="filter-label-input">
+          <label htmlFor="filter-by">
+            Filter By Name
+          </label>
+          <input
+            onChange={(e) => handleFilterByName(e)}
+            className="filter-by-name-input"
+            id="filter-by-name"
+            type="text"
+            value={filterByName}
+          />
+        </div>
+
+        <div className="filter-label-input">
+          <label htmlFor="filter-by">
+            Filter By Genre
+          </label>
+          <select
+            onChange={(e) => handleFilterByNameGenre(e)}
+            className="filter-by-name-input"
+            name=""
+            id=""
+          >
+            {
+              genresToShow.map(g => {
+                return (
+                  <option key={g} value={g} >{g}</option>
+                )
+              })
+            }
+          </select>
+        </div>
+
+        <div className="filter-label-input">
+          <label htmlFor="filter-by">
+            Filter By Plarform
+          </label>
+          <select
+            onChange={(e) => handleFilterByPlatform(e)}
+            className="filter-by-name-input"
+            name=""
+            id=""
+          >
+            {
+              platformsToShow.map(p => {
+                return (
+                  <option key={p} value={p} >{p}</option>
+                )
+              })
+            }
+          </select>
+        </div>
+
+        <div className="filter-label-input">
+          <label htmlFor="filter-by">
+            Filter By Rating
+          </label>
+          <select
+            onChange={(e) => handleFilterByRating(e)}
+            className="filter-by-name-input"
+            name=""
+            id=""
+          >
+            <option value="0"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+
+        <div className="filter-label-input">
+          <button
+            onClick={() => handleClearFilters()}
+          >
+            Clear Filters
+          </button>
+        </div>
+      </div>
 
       {
         isLoading

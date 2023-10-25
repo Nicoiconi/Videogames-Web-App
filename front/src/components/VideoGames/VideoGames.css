@@ -27,3 +27,22 @@
   margin: 0 4px;
   color: black;
 }
+
+.filter-by-name-input{
+  font-size: 15px;
+  margin: 5px;
+  padding: 3px;
+  max-width: 130px;
+}
+
+.filter-inputs-bar{
+  display: flex;
+}
+
+.filter-label-input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 15px;
+}
