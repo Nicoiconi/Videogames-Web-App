@@ -11,7 +11,21 @@ export default function VideoGames() {
 
   const [videoGamesToShow, setVideoGamesToShow] = useState([])
   const [isLoading, setISLoading] = useState(false)
-  const [pageSize, setPageSize] = useState(0)
+  const [pageSize, setPageSize] = useState()
+
+  useEffect(() => {
+    setPageSize(0)
+  }, [])
+
+  useEffect(() => {
+    const getStoredVideoGames = async () => {
+      const storedVideoGames = await getAllData()
+      setVideoGamesToShow(storedVideoGames)
+    }
+    if (videoGamesToShow?.length === 0) {
+      getStoredVideoGames()
+    }
+  }, [])
 
   const handlePageSize = (e) => {
     const { value } = e.target
@@ -20,20 +34,35 @@ export default function VideoGames() {
 
   const handleGetVideoGames = async () => {
     setISLoading(true)
-    console.log(pageSize)
     let videogames
     if (pageSize > 0) {
       videogames = await getVideogames(pageSize)
     } else {
       videogames = await getVideogames()
     }
-    // console.log(videogames)
-    await Promise.all(videogames.map(vg => addData(vg)))
-    const storedVideoGames = await getAllData()
-    setVideoGamesToShow(storedVideoGames)
+    setVideoGamesToShow(videogames)
     setISLoading(false)
   }
-  // console.log(videoGamesToShow)
+
+  const handleStoreVideoGames = async () => {
+    let quantityCreated = 0
+    if (videoGamesToShow?.length > 0) {
+      await Promise.all(videoGamesToShow.map(async vg => {
+        const result = await addData(vg)
+        if (result === "Already created") {
+          quantityCreated++
+        }
+      }))
+    }
+    const storedVideoGames = await getAllData()
+    setVideoGamesToShow(storedVideoGames)
+  }
+
+  const handleGetStoredVideoGames = async () => {
+    const storedVideoGames = await getAllData()
+    console.log(storedVideoGames)
+    setVideoGamesToShow(storedVideoGames)
+  }
 
   const handleClearVideoGames = async () => {
     await Promise.all(videoGamesToShow.map(vg => deleteData(vg.apiId)))
@@ -49,21 +78,37 @@ export default function VideoGames() {
       videogames
       <HomeLink />
 
-      <input
-        onChange={(e) => handlePageSize(e)}
-        type="number"
-      />
+      <div>
+        <input
+          className="quantity-input"
+          onChange={(e) => handlePageSize(e)}
+          type="number"
+          value={pageSize}
+        />
+
+        <button
+          onClick={() => handleGetVideoGames()}
+        >
+          Get Video Games
+        </button>
+      </div>
 
       <button
-        onClick={() => handleGetVideoGames()}
+        onClick={() => handleStoreVideoGames()}
       >
-        Get Video Games
+        Store Video Games
+      </button>
+
+      <button
+        onClick={() => handleGetStoredVideoGames()}
+      >
+        Get Stored Video Games
       </button>
 
       <button
         onClick={() => handleClearVideoGames()}
       >
-        Clear Video Games
+        Clear Stored Video Games
       </button>
 
       {

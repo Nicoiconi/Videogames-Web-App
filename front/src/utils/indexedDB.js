@@ -10,7 +10,12 @@ export const addData = async (data) => {
   const db = await dbPromise
   const tx = db.transaction('video_games_store', 'readwrite')
   const store = tx.objectStore('video_games_store')
-  await store.add(data)
+  const existingData = await store.get(data.apiId)
+  if(!existingData){
+    await store.add(data)
+  } else {
+    return "Already created"
+  }
   await tx.done
 }
 
