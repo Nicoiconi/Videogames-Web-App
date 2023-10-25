@@ -3,7 +3,6 @@ import Card from "../Card/Card"
 
 export default function CardsContainer({ games }) {
 
-  console.log(games)
   return (
     <div className="card-container">
       {
