@@ -1,10 +1,7 @@
 import "./CardsContainer.css"
 import Card from "../Card/Card"
-import { useEffect, useState } from "react"
 
 export default function CardsContainer({ games, setVideoGamesToShow }) {
-
-  // const [gamesToRender, setGamesToRender] = useState({})
 
   function handleOrderBy(e) {
     const { value } = e.target
@@ -26,11 +23,9 @@ export default function CardsContainer({ games, setVideoGamesToShow }) {
       const highRating = [...games]?.sort((a, b) => b?.rating - a?.rating)
       setVideoGamesToShow(highRating)
     } else {
-      // setVideoGamesToShow(games)
+      setVideoGamesToShow(games)
     }
   }
-
-  console.log(games)
 
   return (
     <>
