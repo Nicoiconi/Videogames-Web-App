@@ -31,12 +31,12 @@ export default function VideoGames() {
     setPageSize(0)
   }, [])
 
+  const getStoredVideoGames = async () => {
+    const storedVideoGames = await getAllData()
+    setGamesList(storedVideoGames)
+    setVideoGamesToShow(storedVideoGames)
+  }
   useEffect(() => {
-    const getStoredVideoGames = async () => {
-      const storedVideoGames = await getAllData()
-      setGamesList(storedVideoGames)
-      setVideoGamesToShow(storedVideoGames)
-    }
     if (videoGamesToShow?.length === 0) {
       getStoredVideoGames()
     }
@@ -290,8 +290,7 @@ export default function VideoGames() {
               videoGamesToShow?.length === 0
                 ? "There are no video games"
                 : <>
-                  <h3>{`${videoGamesToShow.length} games were found`}</h3>
-                  <CardsContainer games={videoGamesToShow} />
+                  <CardsContainer games={videoGamesToShow} setVideoGamesToShow={setVideoGamesToShow} />
                 </>
             }
           </>

@@ -3,3 +3,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
+
+.order-by-container{
+  display: flex;
+}
+
+.order-by-container .col{
+  padding: 5px 20px;
+}
