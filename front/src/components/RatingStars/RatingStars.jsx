@@ -1,4 +1,4 @@
-import "./StarRating.css";
+import "./RatingStars.css";
 
 export default function StarRating({ score }) {
   // Star maximum
