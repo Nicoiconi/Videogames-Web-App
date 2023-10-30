@@ -26,7 +26,6 @@ export default function VideoGames() {
     const uniquePlatforms = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.platforms)))
     setPlatformsToShow(uniquePlatforms)
   }, [videoGamesToShow])
-
   useEffect(() => {
     setPageSize(0)
   }, [])

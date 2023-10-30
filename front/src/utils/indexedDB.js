@@ -2,21 +2,38 @@ import { openDB } from 'idb'
 
 const dbPromise = openDB('video_games_db', 1, {
   upgrade(db) {
-db.createObjectStore('video_games_store', {keyPath: 'apiId'})
+    db.createObjectStore('video_games_store', { keyPath: 'apiId' })
   }
 })
+
+function generateRandomId(length) {
+  let randomId = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomId += characters.charAt(randomIndex);
+  }
+
+  return randomId;
+}
 
 export const addData = async (data) => {
   const db = await dbPromise
   const tx = db.transaction('video_games_store', 'readwrite')
   const store = tx.objectStore('video_games_store')
-  const existingData = await store.get(data.apiId)
-  if(!existingData){
-    await store.add(data)
+  if (data.apiId) {
+    const existingData = await store.get(data.apiId)
+    if (!existingData) {
+      await store.add(data)
+      return true
+    } else {
+      return "Already created"
+    }
   } else {
-    return "Already created"
+    const randomId = generateRandomId(10)
+    await store.add({...data, apiId: randomId})
   }
-  await tx.done
 }
 
 export const getAllData = async () => {
