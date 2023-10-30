@@ -19,6 +19,7 @@ export default function VideoGames() {
   const [filterByRating, setFilterByRating] = useState(0);
   const [genresToShow, setGenresToShow] = useState([])
   const [platformsToShow, setPlatformsToShow] = useState([])
+  console.log(videoGamesToShow)
 
   useEffect(() => {
     const uniqueGenres = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.genres)))
@@ -63,7 +64,7 @@ export default function VideoGames() {
     // let quantityCreated = 0
     if (videoGamesToShow?.length > 0) {
       await Promise.all(videoGamesToShow.map(async vg => {
-        const result = await addData(vg)
+        const result = await addData({ ...vg, inDB: true })
         // if (result === "Already created") {
         //   // quantityCreated++
         // }
@@ -81,7 +82,10 @@ export default function VideoGames() {
   const handleClearVideoGames = async () => {
     await Promise.all(videoGamesToShow.map(vg => deleteData(vg.apiId)))
     const storedVideoGames = await getAllData()
-    if (storedVideoGames.length === 0) setVideoGamesToShow([])
+    if (storedVideoGames.length === 0) {
+      setVideoGamesToShow([])
+      setGamesList([])
+    }
   }
 
   const filterVideoGames = (name, genre, platform, rating) => {

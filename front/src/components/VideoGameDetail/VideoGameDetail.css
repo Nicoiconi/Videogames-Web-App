@@ -4,35 +4,38 @@
   align-items: center;
 }
 
-.single-game{
+.remove-db-button {
+  padding: 10px;
+}
+
+.single-game {
   display: flex;
   flex-direction: column;
 }
 
-.image-data{
+.image-data {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-.image{
+.image {
   width: 500px;
-
 }
 
-.platforms-game-detail-container{
+.platforms-game-detail-container {
   display: flex;
   justify-content: center;
   margin: 10px;
   gap: 30px;
 }
 
-.platforms-game-detail-list{
+.platforms-game-detail-list {
   display: flex;
   gap: 20px;
 }
 
-.genres-game-detail-container{
+.genres-game-detail-container {
   display: flex;
   justify-content: center;
 
@@ -40,16 +43,16 @@
   gap: 30px;
 }
 
-.genres-game-detail-list{
+.genres-game-detail-list {
   display: flex;
   gap: 20px;
 }
 
-.game-detail-description-title{
+.game-detail-description-title {
   display: flex;
   justify-content: center;
 }
 
-.game-detail-description{
+.game-detail-description {
   margin: 10px 40px;
 }

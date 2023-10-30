@@ -8,8 +8,7 @@ export default function Card({ game }) {
   const { setSingleVideoGame } = useVideoGames()
 
   function handleSingleVideoGame(){
-    setSingleVideoGame(game.apiId)
-    // window.localStorage.setItem('video-game-id', JSON.stringify(game.apiId))
+    setSingleVideoGame(game)
   }
 
   return (

@@ -43,7 +43,7 @@ export const getSingleVideoGame = async (apiId) => {
 
     const data = await singleVideoGame.json()
 
-    console.log(data)
+    // console.log(data)
 
     return data
 

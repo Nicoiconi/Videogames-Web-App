@@ -77,7 +77,7 @@ export default function CreateVideoGameForm() {
   }
 
   async function handleCreateVideoGame(e) {
-    // e.preventDefault()
+    e.preventDefault()
     const createVideoGame = await addData({
       ...newVideoGame,
       apiId: generateElegantCode()

@@ -8,7 +8,7 @@ export function VideoGamesProvider({ children }) {
   // const videoGameStored = window.localStorage.getItem('video-game-stored')
   // const singleGame = ""
 
-  const [singleVideoGame, setSingleVideoGame] = useState("")
+  const [singleVideoGame, setSingleVideoGame] = useState({})
 
   return (
     <VideoGamesContext.Provider value={
