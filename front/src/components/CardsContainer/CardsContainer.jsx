@@ -5,21 +5,16 @@ export default function CardsContainer({ games, setVideoGamesToShow }) {
 
   function handleOrderBy(e) {
     const { value } = e.target
-    console.log(value)
     if (value === "A-Z") {
-      console.log(value)
       const orderAZ = [...games]?.sort((a, b) => a?.name.localeCompare(b?.name))
       setVideoGamesToShow(orderAZ)
     } else if (value === "Z-A") {
-      console.log(value)
       const orderZA = [...games]?.sort((a, b) => b?.name.localeCompare(a?.name))
       setVideoGamesToShow(orderZA)
     } else if (value === "lowRate") {
-      console.log(value)
       const lowRating = [...games]?.sort((a, b) => a?.rating - b?.rating)
       setVideoGamesToShow(lowRating)
     } else if (value === "highRate") {
-      console.log(value)
       const highRating = [...games]?.sort((a, b) => b?.rating - a?.rating)
       setVideoGamesToShow(highRating)
     } else {

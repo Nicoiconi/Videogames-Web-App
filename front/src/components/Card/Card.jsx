@@ -1,12 +1,27 @@
+import { Link } from "react-router-dom"
 import StarRating from "../RatingStars/RatingStars"
 import "./Card.css"
+import { useVideoGames } from "../../hooks/useVideoGames/useVideoGames"
 
 export default function Card({ game }) {
+
+  const { setSingleVideoGame } = useVideoGames()
+
+  function handleSingleVideoGame(){
+    setSingleVideoGame(game.apiId)
+    // window.localStorage.setItem('video-game-id', JSON.stringify(game.apiId))
+  }
 
   return (
     <div className="card">
       <div className="card-title">
-        {game.name}
+        <Link
+          onClick={() => handleSingleVideoGame()}
+          to={`/videogame-detail/${game?.apiId}`}
+          className="link-color"
+        >
+          {game.name}
+        </Link>
       </div>
 
       <StarRating score={game.rating} />

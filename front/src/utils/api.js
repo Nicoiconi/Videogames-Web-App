@@ -31,3 +31,23 @@ export const getVideogames = async (size) => {
     console.log(error)
   }
 }
+
+export const getSingleVideoGame = async (apiId) => {
+  try {
+
+    const singleVideoGame = await fetch(`https://api.rawg.io/api/games/${apiId}?key=${apiKey}`)
+
+    if(!singleVideoGame.ok){
+      throw new Error(`Error status: ${singleVideoGame.status}`)
+    }
+
+    const data = await singleVideoGame.json()
+
+    console.log(data)
+
+    return data
+
+  } catch (error) {
+    console.log(error)
+  }
+}
