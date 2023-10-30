@@ -38,6 +38,5 @@ export const deleteData = async (id) => {
   const tx = db.transaction('video_games_store', 'readwrite')
   const store = tx.objectStore('video_games_store')
   await store.delete(id)
-  console.log("Video game deleted")
-  await tx.done
+  return "Video game deleted"
 }

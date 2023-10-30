@@ -37,9 +37,10 @@ export default function VideoGameDetail() {
   }, [singleVideoGame])
 
   async function handleRemoveFromDB() {
-    await deleteData(singleVideoGame?.apiId)
+    const response = await deleteData(singleVideoGame?.apiId)
+    alert(response)
   }
-  console.log(videoGameToRender)
+  // console.log(videoGameToRender)
 
   return (
     <div className="videogame">

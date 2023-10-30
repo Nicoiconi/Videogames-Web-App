@@ -83,7 +83,7 @@ export default function CreateVideoGameForm() {
       apiId: generateElegantCode()
     })
 
-    if (createVideoGame) console.log(createVideoGame)
+    if (createVideoGame) alert(createVideoGame)
   }
 
   // console.log(newVideoGame)
