@@ -155,8 +155,7 @@ export default function VideoGames() {
     <div className="videogames">
 
       <LinksBar />
-
-      videogames
+      
       <HomeLink />
 
       <div className="video-game-button">

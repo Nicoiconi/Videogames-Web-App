@@ -19,16 +19,6 @@ export default function LinksBar() {
           </button>
         </Link>
         <Link
-          to="/videogame-detail"
-        >
-          <button
-            className={location.pathname === "/videogame-detail" ? "landing-page-link route" : "landing-page-link"}
-
-          >
-            videogame-detail
-          </button>
-        </Link>
-        <Link
           to="/create-videogame"
         >
           <button

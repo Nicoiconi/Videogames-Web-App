@@ -1,0 +1,7 @@
+.home-link{
+  color: rgb(196, 233, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
