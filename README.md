@@ -4,6 +4,24 @@ Un clásico proyecto con pedidos a una API y posibilidad de crear tu propio jueg
 Tiene la posibilidiad de buscar por nombre (trae todos los juegos que councidan con la/s palabra/s), barra de filtros y paginado.
 Presionar el nombre de algún juego te redireccionará a una vista con el detalle del juego.
 
+Renovado - Ahora
+
+Solicitud de videojuegos a la api. Se puede elegir la cantidad, con un máximo de 40.
+Botón guardar en la base de datos del navegador (IndexedDB), otro para solicitarlos y otro para eliminarlos todos.
+Filtros combinados por nombre, género, plataforma y rating. Botón para limpiar los filtros.
+Se pueden ordenar alfabéticamente, de la A a la Z o al inverso; y por rating, de menor a mayor o de mayor a menor.
+Desde la tarjeta, se puede presionar el nombre del juego para acceder al detalle y redirige a la vista individual. Si el juego no fue creado desde el formulario, va a utilizar el id para solicitar el detalle completo del videojuego a la api. Si el juego esta guardado en la base de datos renderiza un boton para eliminarlo de la base de datos.
+Usa Context para controlar el juego a mostrar en la vista de detalle.
+Botón que redirige al formulario para crear un video juego. Al crear comprueba que el id o el nombre no se repitan.
+Link "BACK TO HOME" en cada ruta.
+
+React-Router-DOM versión 6.17.0 (antes 5.2.0)
+React & React DOM versión 18.2.0 (antes 17.0.2)
+
+----
+
+Antes
+
 Tecnologias utilizadas a destacar:
 front:
   - React (para react-router-dom la version "^5.2.0")
