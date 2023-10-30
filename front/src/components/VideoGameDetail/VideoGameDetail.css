@@ -8,9 +8,23 @@
   padding: 10px;
 }
 
+.title-rating{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+  align-items: center;
+}
+
+.title{
+  font-size: 30px;
+}
+
 .single-game {
   display: flex;
   flex-direction: column;
+  border: 5px solid rgb(40, 66, 100);
+  padding: 10px;
 }
 
 .image-data {
@@ -19,8 +33,18 @@
   gap: 10px;
 }
 
+.image-container{
+  max-height: 300px;
+}
+
 .image {
-  width: 500px;
+  max-height: 300px;
+}
+
+.data-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .platforms-game-detail-container {
@@ -55,4 +79,9 @@
 
 .game-detail-description {
   margin: 10px 40px;
+  border: 1px solid black;
+}
+
+.game-description {
+  padding: 20px;
 }

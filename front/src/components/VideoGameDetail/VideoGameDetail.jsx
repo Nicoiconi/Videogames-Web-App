@@ -39,7 +39,7 @@ export default function VideoGameDetail() {
   async function handleRemoveFromDB() {
     await deleteData(singleVideoGame?.apiId)
   }
-  // console.log(videoGameToRender)
+  console.log(videoGameToRender)
 
   return (
     <div className="videogame">
@@ -63,136 +63,92 @@ export default function VideoGameDetail() {
         !videoGameToRender?.name
           ? <>{noVideoGameStored}</>
           :
-          videoGameToRender?.client_created
-            ? <div className="container-fluid single-game">
+          <div className="container-fluid single-game">
 
-              <div className="row image-data">
-                <div className="col">
-                  <img
-                    className="image"
-                    src={videoGameToRender?.background_image}
-                    alt=""
-                  />
-                </div>
-                <div className="col">
-                  {videoGameToRender?.name}
-                  <hr />
-                  <StarRating score={videoGameToRender?.rating} />
-
-                </div>
+            <div className="row title-rating">
+              <div className="col title">
+                {videoGameToRender?.name}
+              </div>
+              <div className="col">
+                <StarRating score={videoGameToRender?.rating} />
               </div>
 
-              <hr />
+            </div>
+            <div className="row image-data">
+              <div className="col image-container">
+                <img
+                  className="image"
+                  src={videoGameToRender?.background_image}
+                  alt=""
+                />
+              </div>
+            </div>
 
-              <div className="row platforms-game-detail-container">
-                <div className="col">
-                  Platforms:
-                </div>
-                <div className="col platforms-game-detail-list">
-                  {
-                    videoGameToRender?.platforms?.map(p => {
+            <hr />
+
+            <div className="row platforms-game-detail-container">
+              <div className="col">
+                Platforms:
+              </div>
+              <div className="col platforms-game-detail-list">
+                {
+                  videoGameToRender?.client_created
+                    ? videoGameToRender?.platforms?.map((p) => {
                       return (
                         <div key={`platform-${p}`}>
                           {p}
                         </div>
                       )
                     })
-                  }
-                </div>
-              </div>
-
-              <div className="row genres-game-detail-container">
-                <div className="col">
-                  Genres:
-                </div>
-                <div className="col genres-game-detail-list">
-                  {
-                    videoGameToRender?.genres?.map(g => {
-                      return (
-                        <div key={`genre-${g}`}>
-                          {g}
-                        </div>
-                      )
-                    })
-                  }
-                </div>
-              </div>
-
-              <hr />
-
-              <div className="row game-detail-description">
-
-                <h4 className="game-detail-description-title">
-                  Description
-                </h4>
-                {videoGameToRender?.description_raw}
-              </div>
-            </div>
-            :
-            <div className="container-fluid single-game">
-
-              <div className="row image-data">
-                <div className="col">
-                  <img
-                    className="image"
-                    src={videoGameToRender?.background_image}
-                    alt=""
-                  />
-                </div>
-                <div className="col">
-                  {videoGameToRender?.name}
-                  <hr />
-                  <StarRating score={videoGameToRender?.rating} />
-
-                </div>
-              </div>
-
-              <hr />
-
-              <div className="row platforms-game-detail-container">
-                <div className="col">
-                  Platforms:
-                </div>
-                <div className="col platforms-game-detail-list">
-                  {
-                    videoGameToRender?.platforms?.map(p => {
+                    : videoGameToRender?.platforms?.map(p => {
                       return (
                         <div key={`platform-${p?.platgform?.id}`}>
                           {p?.platform?.name}
                         </div>
                       )
                     })
-                  }
-                </div>
+                }
               </div>
+            </div>
 
-              <div className="row genres-game-detail-container">
-                <div className="col">
-                  Genres:
-                </div>
-                <div className="col genres-game-detail-list">
-                  {
-                    videoGameToRender?.genres?.map(g => {
+            <div className="row genres-game-detail-container">
+              <div className="col">
+                Genres:
+              </div>
+              <div className="col genres-game-detail-list">
+                {
+                  videoGameToRender?.client_created
+                    ? videoGameToRender?.genres?.map((g) => {
+                      return (
+                        <div key={`genre-${g}`}>
+                          {g}
+                        </div>
+                      )
+                    })
+                    : videoGameToRender?.genres?.map(g => {
                       return (
                         <div key={`genre-${g?.id}`}>
                           {g?.name}
                         </div>
                       )
                     })
-                  }
-                </div>
+                }
               </div>
+            </div>
 
-              <hr />
+            <hr />
 
-              <div className="row game-detail-description">
+            <div className="row game-detail-description">
 
-                <h4 className="game-detail-description-title">
-                  Description
-                </h4>
+              <h4 className="game-detail-description-title">
+                Description
+              </h4>
+              <div className="row game-description">
                 {videoGameToRender?.description_raw}
               </div>
             </div>
+          </div>
+
       }
 
     </div>

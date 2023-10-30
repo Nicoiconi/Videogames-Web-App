@@ -19,7 +19,7 @@ export default function VideoGames() {
   const [filterByRating, setFilterByRating] = useState(0);
   const [genresToShow, setGenresToShow] = useState([])
   const [platformsToShow, setPlatformsToShow] = useState([])
-  console.log(videoGamesToShow)
+  // console.log(videoGamesToShow)
 
   useEffect(() => {
     const uniqueGenres = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.genres)))
