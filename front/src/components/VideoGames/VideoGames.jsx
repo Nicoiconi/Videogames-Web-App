@@ -136,8 +136,8 @@ export default function VideoGames() {
   }
 
   const handleFilterByRating = (e) => {
-    const {value} = e.target
-    if(Number(value) === 0) return
+    const { value } = e.target
+    if (Number(value) === 0) return
     setFilterByRating(value)
     filterVideoGames(filterByName, filterByGenres, filterByPlatform, value)
   }
@@ -154,7 +154,7 @@ export default function VideoGames() {
     <div className="videogames">
 
       <LinksBar />
-      
+
       <HomeLink />
 
       <div className="video-game-button">

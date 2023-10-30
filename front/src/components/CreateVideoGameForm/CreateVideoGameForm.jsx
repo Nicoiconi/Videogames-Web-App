@@ -3,6 +3,7 @@ import HomeLink from "../HomeLink/HomeLink"
 import LinksBar from "../LinksBar/LinksBar"
 import "./CreateVideoGameForm.css"
 import { addData } from "../../utils/indexedDB"
+import { generateElegantCode } from "../../utils/idGenerator"
 
 export default function CreateVideoGameForm() {
 
@@ -76,13 +77,16 @@ export default function CreateVideoGameForm() {
   }
 
   async function handleCreateVideoGame(e) {
-    e.preventDefault()
-    const createVideoGame = await addData(newVideoGame)
+    // e.preventDefault()
+    const createVideoGame = await addData({
+      ...newVideoGame,
+      apiId: generateElegantCode()
+    })
 
-    if (createVideoGame) console.log("Video Game Created")
+    if (createVideoGame) console.log(createVideoGame)
   }
 
-  console.log(newVideoGame)
+  // console.log(newVideoGame)
   return (
     <div className="create-videogame">
 

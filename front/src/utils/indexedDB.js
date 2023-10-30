@@ -22,18 +22,26 @@ export const addData = async (data) => {
   const db = await dbPromise
   const tx = db.transaction('video_games_store', 'readwrite')
   const store = tx.objectStore('video_games_store')
-  if (data.apiId) {
-    const existingData = await store.get(data.apiId)
-    if (!existingData) {
-      await store.add(data)
-      return true
-    } else {
-      return "Already created"
-    }
+  const allVideoGames = await store.getAll()
+
+  // if (data.apiId) {
+  const existingData = await store.get(data.apiId)
+  if (existingData) {
+    return "Already created"
   } else {
-    const randomId = generateRandomId(10)
-    await store.add({...data, apiId: randomId})
+    const existingName = allVideoGames.filter(vg => vg.name.toLowerCase() === data.name.toLowerCase())
+    if (existingName?.length > 0) {
+      return "Name already exist"
+    } else {
+      await store.add(data)
+      return "Video game created"
+    }
   }
+  // } else {
+  // const randomId = generateRandomId(10)
+  // await store.add(data)
+  // return "Video game created"
+  // }
 }
 
 export const getAllData = async () => {
