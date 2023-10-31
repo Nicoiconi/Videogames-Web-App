@@ -22,9 +22,9 @@ export default function VideoGames() {
   // console.log(videoGamesToShow)
 
   useEffect(() => {
-    const uniqueGenres = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.genres)))
+    const uniqueGenres = Array.from(new Set(videoGamesToShow?.flatMap(vg => vg?.genres)))
     setGenresToShow(uniqueGenres)
-    const uniquePlatforms = Array.from(new Set(videoGamesToShow.flatMap(vg => vg.platforms)))
+    const uniquePlatforms = Array.from(new Set(videoGamesToShow?.flatMap(vg => vg?.platforms)))
     setPlatformsToShow(uniquePlatforms)
   }, [videoGamesToShow])
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function VideoGames() {
   const handleStoreVideoGames = async () => {
     // let quantityCreated = 0
     if (videoGamesToShow?.length > 0) {
-      await Promise.all(videoGamesToShow.map(async vg => {
+      await Promise.all(videoGamesToShow?.map(async vg => {
         const result = await addData({ ...vg, inDB: true })
         // if (result === "Already created") {
         //   // quantityCreated++
@@ -80,9 +80,9 @@ export default function VideoGames() {
   }
 
   const handleClearVideoGames = async () => {
-    await Promise.all(videoGamesToShow.map(vg => deleteData(vg.apiId)))
+    await Promise.all(videoGamesToShow?.map(vg => deleteData(vg?.apiId)))
     const storedVideoGames = await getAllData()
-    if (storedVideoGames.length === 0) {
+    if (storedVideoGames?.length === 0) {
       setVideoGamesToShow([])
       setGamesList([])
     }
@@ -91,30 +91,30 @@ export default function VideoGames() {
   const filterVideoGames = (name, genre, platform, rating) => {
     let filteredGames = [...gamesList]
     if (name) {
-      filteredGames = filteredGames.filter(vg => {
+      filteredGames = filteredGames?.filter(vg => {
         return (
-          vg.name.toLowerCase().includes(name.toLowerCase())
+          vg?.name.toLowerCase().includes(name.toLowerCase())
         )
       })
     }
     if (genre) {
-      filteredGames = filteredGames.filter(vg => {
+      filteredGames = filteredGames?.filter(vg => {
         return (
-          vg.genres.includes(genre)
+          vg?.genres?.includes(genre)
         )
       })
     }
     if (platform) {
-      filteredGames = filteredGames.filter(vg => {
+      filteredGames = filteredGames?.filter(vg => {
         return (
-          vg.platforms.includes(platform)
+          vg?.platforms?.includes(platform)
         )
       })
     }
     if (rating) {
-      filteredGames = filteredGames.filter(vg => {
+      filteredGames = filteredGames?.filter(vg => {
         return (
-          Number(vg.rating) === Number(rating)
+          Number(vg?.rating) === Number(rating)
         )
       })
     }
@@ -227,7 +227,7 @@ export default function VideoGames() {
             id=""
           >
             {
-              genresToShow.map(g => {
+              genresToShow?.map(g => {
                 return (
                   <option key={g} value={g} >{g}</option>
                 )
@@ -247,7 +247,7 @@ export default function VideoGames() {
             id=""
           >
             {
-              platformsToShow.map(p => {
+              platformsToShow?.map(p => {
                 return (
                   <option key={p} value={p} >{p}</option>
                 )

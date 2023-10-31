@@ -12,7 +12,7 @@ export default function LinksBar() {
           to="/videogames"
         >
           <button
-            className={location.pathname === "/videogames" ? "landing-page-link route" : "landing-page-link"}
+            className={location?.pathname === "/videogames" ? "landing-page-link route" : "landing-page-link"}
 
           >
             videogames
@@ -22,7 +22,7 @@ export default function LinksBar() {
           to="/create-videogame"
         >
           <button
-            className={location.pathname === "/create-videogame" ? "landing-page-link route" : "landing-page-link"}
+            className={location?.pathname === "/create-videogame" ? "landing-page-link route" : "landing-page-link"}
           >
             create-videogame
           </button>

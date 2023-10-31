@@ -3,8 +3,8 @@ export function generateElegantCode() {
   let elegantCode = '';
 
   for (let i = 0; i < 4; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    elegantCode += characters.charAt(randomIndex);
+    const randomIndex = Math.floor(Math.random() * characters?.length);
+    elegantCode += characters?.charAt(randomIndex);
   }
 
   return elegantCode;

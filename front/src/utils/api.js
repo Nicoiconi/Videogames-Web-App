@@ -9,20 +9,20 @@ export const getVideogames = async (size) => {
       response = await fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
     }
 
-    if (!response.ok) {
-      throw new Error(`Error status: ${response.status}`)
+    if (!response?.ok) {
+      throw new Error(`Error status: ${response?.status}`)
     }
 
-    const data = await response.json()
+    const data = await response?.json()
 
-    const videoGameFormat = data.results.map(vg => {
+    const videoGameFormat = data?.results?.map(vg => {
       return {
-        apiId: vg.id,
-        name: vg.name,
-        image: vg.background_image,
-        rating: Math.round(vg.rating),
-        genres: vg.genres.map((g) => g.name),
-        platforms: vg.platforms.map((p) => p.platform.name),
+        apiId: vg?.id,
+        name: vg?.name,
+        image: vg?.background_image,
+        rating: Math.round(vg?.rating),
+        genres: vg?.genres.map((g) => g?.name),
+        platforms: vg?.platforms.map((p) => p?.platform?.name),
       }
     })
 
@@ -37,11 +37,11 @@ export const getSingleVideoGame = async (apiId) => {
 
     const singleVideoGame = await fetch(`https://api.rawg.io/api/games/${apiId}?key=${apiKey}`)
 
-    if(!singleVideoGame.ok){
-      throw new Error(`Error status: ${singleVideoGame.status}`)
+    if(!singleVideoGame?.ok){
+      throw new Error(`Error status: ${singleVideoGame?.status}`)
     }
 
-    const data = await singleVideoGame.json()
+    const data = await singleVideoGame?.json()
 
     // console.log(data)
 

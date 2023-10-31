@@ -19,29 +19,29 @@ export default function Card({ game }) {
           to={`/videogame-detail/${game?.apiId}`}
           className="link-color"
         >
-          {game.name}
+          {game?.name}
         </Link>
       </div>
 
-      <StarRating score={game.rating} />
+      <StarRating score={game?.rating} />
 
       <div className="card-image-container">
         <img
-          src={game.image}
-          alt={`${game.name} image`}
+          src={game?.image}
+          alt={`${game?.name} image`}
         />
       </div>
 
       <div className="platforms-genres">
         <div className="platforms-genres-list">
           <strong>
-            Platforms {game.platforms.length}
+            Platforms {game?.platforms?.length}
           </strong>
           <ul>
             {
-              game.platforms.map(p => {
+              game?.platforms?.map(p => {
                 return (
-                  <li key={`${game.apiId}-platform-${p}`}>{p}
+                  <li key={`${game?.apiId}-platform-${p}`}>{p}
                   </li>
                 )
               })
@@ -51,13 +51,13 @@ export default function Card({ game }) {
 
         <div className="platforms-genres-list">
           <strong>
-            Genres {game.genres.length}
+            Genres {game?.genres?.length}
           </strong>
           <ul>
             {
-              game.genres.map(g => {
+              game?.genres.map(g => {
                 return (
-                  <li key={`${game.apiId}-genre-${g}`}>
+                  <li key={`${game?.apiId}-genre-${g}`}>
                     {g}
                   </li>
                 )
